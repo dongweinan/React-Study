@@ -1,0 +1,41 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的基本知识</title>
+   </head>
+   <body>
+        <script type="text/javascript">
+            // 创建一个person类
+            class Person{
+                // 构造器
+                constructor(name,age){
+                    this.name = name
+                    this.age = age
+                }
+                // 一般方法
+                speak(){
+                    console.log(`我叫${this.name},今年${this.age}`)
+                }
+            }
+            class Student extends Person{
+                constructor(name,age,grade){
+                    super(name,age)
+                    this.grade = grade
+                }
+                speak(){
+                    console.log(`我叫${this.name},今年${this.age},年纪：${this.grade}`)
+                }
+                study(){
+                    console.log('我爱学习')
+                }
+            }
+            const p1 = new Person('Tom',18)
+            const s1 = new Student('jerry',14,'初二')
+            console.log(s1)
+            s1.speak()
+            s1.study()
+        </script>
+   </body>
+   </html>

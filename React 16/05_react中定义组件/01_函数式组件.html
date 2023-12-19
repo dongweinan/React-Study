@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式组件</title>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="https:unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react dom 核心库 -->
+    <script type="text/javascript" src="https:unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 引入babel 库 -->
+    <script type="text/javascript" src="https:unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    
+</head>
+<body>
+    <div id="test"></div>
+   <!-- 这里标明 script标签里写的是 jsx 并且使用babel 进行转换 成js代码 -->
+    <script type="text/babel">
+        function Demo(){
+            console.log(this)
+            // 此处的this不是全局window，而是undefined，因为这是一段jsx代码，需要babel将其转换成js，在这个过程中开启了严格模式，禁止定义的函数中的this指向window
+            return <h1>函数式组件</h1>
+        }
+        class demo1{
+            
+        }
+        // 渲染虚拟Dom 到界面
+        ReactDOM.render(<Demo />,document.getElementById('test'))
+    </script>
+</body>
+</html>
+
