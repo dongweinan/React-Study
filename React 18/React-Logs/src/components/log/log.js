@@ -1,8 +1,14 @@
 import './log.css'
 import { LogItem } from './logItem/logItem'
 import Card from '../card/card'
+import LogFilter from './logFilter/logFilter'
+import { useState } from 'react'
 export const Log = (props) => {
-  const getLogItem = props.logList?.map((item) => (
+  const [year, setYear] = useState(2022)
+  const logFilterList = props.logList.filter(
+    (item) => item.date.getFullYear() == year
+  )
+  const getLogItem = logFilterList?.map((item) => (
     <LogItem
       key={item.id}
       id={item.id}
@@ -14,9 +20,14 @@ export const Log = (props) => {
       }}
     />
   ))
+
+  const onFilterChange = (val) => {
+    setYear(val)
+  }
   return (
     <Card className="logs">
-      {props.logList.length > 0 ? getLogItem : <p>暂时没有数据！</p>}
+      <LogFilter year={year} onFilterChange={onFilterChange} />
+      {logFilterList.length > 0 ? getLogItem : <p>暂时没有数据！</p>}
     </Card>
   )
 }

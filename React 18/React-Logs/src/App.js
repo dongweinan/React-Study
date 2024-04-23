@@ -12,25 +12,25 @@ const App = () => {
   const [logList, setLogList] = useState([
     {
       id: 1,
-      date: new Date(),
+      date: new Date('2022-01-02'),
       content: '学习六脉神剑',
       time: '10分钟',
     },
     {
       id: 2,
-      date: new Date(),
+      date: new Date('2022-01-02'),
       content: '学习凌波微步',
       time: '20分钟',
     },
     {
       id: 3,
-      date: new Date(),
+      date: new Date('2022-01-02'),
       content: '学习降龙十八掌',
       time: '30分钟',
     },
     {
       id: 4,
-      date: new Date(),
+      date: new Date('2021-01-02'),
       content: '学习九阳神功',
       time: '40分钟',
     },
