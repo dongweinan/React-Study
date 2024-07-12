@@ -1,0 +1,27 @@
+.counterWrap{
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    padding-right: 20rem;
+}
+.sub,
+.add{
+    width: 36rem;
+    height: 36rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rem;
+    border: 1px solid black;
+}
+.add{
+    background-color:rgb(255 200 23);
+    border: none;
+}
+.sub{
+    background-color: white;
+}
+.amount{
+    font-size: 32rem;
+}
