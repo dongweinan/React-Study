@@ -22,8 +22,8 @@ const Checkout = (props) => {
       <div className={classes.contentWrap}>
         <div className={classes.contentHead}>餐品详情</div>
         <div className={classes.content}>
-          {ctx.items.map((item) => {
-            return <CheckoutItems meal={item} />
+          {ctx.items.map((item, index) => {
+            return <CheckoutItems meal={item} key={index} />
           })}
         </div>
         <div className={classes.contentFooter}>

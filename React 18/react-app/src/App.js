@@ -1,10 +1,43 @@
 import './App.css'
 import Meals from './components/meals/meals.js'
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import MealStroe from './store/mealStore.js'
 import Search from './components/search/search.js'
 import Cart from './components/cart/cart'
 
+const cartDataReduce = (state, { type, meal }) => {
+  const newCart = { ...state }
+  switch (type) {
+    case 'add':
+      if (newCart.items.indexOf(meal) === -1) {
+        newCart.items.push(meal)
+        meal.amount = 1
+      } else {
+        meal.amount += 1
+      }
+      newCart.totalAmount += 1
+      newCart.totalPrice += meal.price
+      return newCart
+    case 'sub':
+      meal.amount -= 1
+      if (meal.amount === 0) {
+        newCart.items.splice(newCart.items.indexOf(meal), 1)
+      }
+      newCart.totalAmount -= 1
+      newCart.totalPrice -= meal.price
+      return newCart
+    case 'clear':
+      newCart.items.forEach((item) => {
+        delete item.amount
+      })
+      newCart.items = []
+      newCart.totalAmount = 0
+      newCart.totalPrice = 0
+      return newCart
+    default:
+      return newCart
+  }
+}
 function App() {
   const MEALS_DATA = [
     {
@@ -71,43 +104,20 @@ function App() {
       price: 35,
     },
   ]
-  const [cartData, setCartData] = useState({
+  const [cartData, dispatchCartData] = useReducer(cartDataReduce, {
     items: [],
     totalAmount: 0,
     totalPrice: 0,
   })
   const [mealsData, setMealsData] = useState(MEALS_DATA)
   const subClick = (meal) => {
-    meal.amount -= 1
-    const newCart = { ...cartData }
-    if (meal.amount === 0) {
-      newCart.items.splice(newCart.items.indexOf(meal), 1)
-    }
-    newCart.totalAmount -= 1
-    newCart.totalPrice -= meal.price
-    setCartData(newCart)
+    dispatchCartData({ type: 'sub', meal })
   }
   const addClick = (meal) => {
-    const newCart = { ...cartData }
-    if (newCart.items.indexOf(meal) === -1) {
-      newCart.items.push(meal)
-      meal.amount = 1
-    } else {
-      meal.amount += 1
-    }
-    newCart.totalAmount += 1
-    newCart.totalPrice += meal.price
-    setCartData(newCart)
+    dispatchCartData({ type: 'add', meal })
   }
   const clearCard = () => {
-    const newCart = { ...cartData }
-    newCart.items.forEach((item) => {
-      delete item.amount
-    })
-    newCart.items = []
-    newCart.totalAmount = 0
-    newCart.totalPrice = 0
-    setCartData(newCart)
+    dispatchCartData({ type: 'clear' })
   }
   const searchHandle = (keyword) => {
     const newData = MEALS_DATA.filter(
@@ -116,15 +126,13 @@ function App() {
     setMealsData(newData)
   }
   return (
-    <React.StrictMode>
-      <MealStroe.Provider
-        value={{ ...cartData, subClick, addClick, clearCard }}
-      >
-        <Search searchHandle={searchHandle} />
-        <Meals meals={mealsData} />
-        <Cart />
-      </MealStroe.Provider>
-    </React.StrictMode>
+    // <React.StrictMode>
+    <MealStroe.Provider value={{ ...cartData, subClick, addClick, clearCard }}>
+      <Search searchHandle={searchHandle} />
+      <Meals meals={mealsData} />
+      <Cart />
+    </MealStroe.Provider>
+    // </React.StrictMode>
   )
 }
 

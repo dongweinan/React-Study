@@ -1,7 +1,7 @@
 import classes from './cart.module.css'
 import BagUrl from '../../assets/imgs/bag.png'
 import MealStroe from '../../store/mealStore'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CartDetail from './cartDetail/cartDetail'
 import Checkout from './checkout/checkout'
 
@@ -15,6 +15,13 @@ const Cart = () => {
     }
     setShowDetail((prevState) => !prevState)
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!ctx.items.length > 0) {
+      setShowDetail(false)
+      setShowFinal(false)
+    }
+  })
   const showFinalHandle = (e) => {
     if (!ctx.items.length > 0) {
       return
