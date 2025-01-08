@@ -127,12 +127,13 @@ function App() {
   }
   return (
     // <React.StrictMode>
-    <MealStroe.Provider value={{ ...cartData, subClick, addClick, clearCard }}>
-      <Search searchHandle={searchHandle} />
-      <Meals meals={mealsData} />
-      <Cart />
-    </MealStroe.Provider>
+    // <MealStroe.Provider value={{ ...cartData, subClick, addClick, clearCard }}>
+    //   <Search searchHandle={searchHandle} />
+    //   <Meals meals={mealsData} />
+    //   <Cart />
+    // </MealStroe.Provider>
     // </React.StrictMode>
+    <div>app</div>
   )
 }
 
