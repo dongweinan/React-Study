@@ -1,0 +1,78 @@
+.CartWrap{
+    width: 700rem;
+    height: 80rem;
+    border-radius: 40rem;
+    background-color: rgb(78, 78, 78);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10rem;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    z-index: 9999;
+}
+.BagWrap{
+    position: relative;
+    width: 80rem;
+    
+}
+.BagImg{
+    position: absolute;
+    width: 100%;
+    bottom: 0rem;
+}
+.BagAmount{
+    position: absolute;
+    right: -10rem;
+    top: -10rem;
+    width: 36rem;
+    height: 36rem;
+    font-size: 24rem;
+    color: #fff;
+    background-color: rgb(202, 44, 44);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+}
+.Price{
+    flex: 1;
+    padding: 0 20rem;
+    height: 80rem;
+    line-height: 80rem;
+    font-size: 36rem;
+    color: #fff;
+    font-weight: bold;
+}
+.Tip{
+    flex: 1;
+    padding: 0 20rem;
+    height: 80rem;
+    line-height: 80rem;
+    font-size: 36rem;
+    color: #b0afaf;
+    font-weight: bold;
+}
+.Price::before{
+    content: "¥";
+    font-size: 30rem;
+    margin-right: 6rem;
+}
+.Btn{
+    width: 200rem;
+    height: 80rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36rem;
+    border-radius: 40rem;
+    background-color: rgb(255 200 23);
+    border: none;
+}
+.Disabled{
+    background-color: #b0afaf;
+    color: azure;
+}

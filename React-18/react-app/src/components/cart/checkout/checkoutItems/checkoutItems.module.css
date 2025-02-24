@@ -1,0 +1,23 @@
+.itemWrap{
+    display: flex;
+    padding: 20rem;
+    gap: 20rem;
+}
+.img{
+    width: 150rem;
+
+}
+.descWrap{
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.priceWrap{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20rem;
+}
+.price::before{
+    content:'¥'
+}

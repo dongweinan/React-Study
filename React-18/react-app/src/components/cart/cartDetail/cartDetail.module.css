@@ -1,0 +1,34 @@
+.cartDetailWrap{
+    position: absolute;
+    bottom: 0;
+    width: 750rem;
+    max-height: 1000rem;
+    overflow: auto;
+    padding-bottom: 100rem;
+    background-color: #fff;
+    border-top-left-radius: 30rem;
+    border-top-right-radius: 30rem;
+}
+.header{
+    width: 100%;
+    height: 100rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40rem;
+    
+}
+.title{
+    font-size: 32rem;
+}
+.btnWrap{
+    display: flex;
+    gap: 10rem;
+    align-items: center;
+}
+.icon{
+    color: #999898;
+}
+.btnText{
+    font-size: 28rem;
+}

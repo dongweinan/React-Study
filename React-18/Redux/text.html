@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/redux@4.2.1/dist/redux.min.js"></script>
+    <script>
+      const reducer = (state = { count: 0 }, action) => {
+        switch (action.type) {
+          case 'add':
+            return { count: state.count + 1 }
+          case 'reduce':
+            return { count: state.count - 1 }
+          default:
+            return state
+        }
+      }
+
+      const store = Redux.createStore(reducer)
+
+      store.subscribe(() => {
+        document.getElementById('count').innerHTML = store.getState().count
+      })
+
+      function addClick() {
+        store.dispatch({ type: 'add' })
+      }
+
+      function reduceClick() {
+        store.dispatch({ type: 'reduce' })
+      }
+    </script>
+    <button id="add" onclick="addClick()">+</button>
+    <span id="count">0</span>
+    <button id="reduce" onclick="reduceClick()">-</button>
+  </body>
+</html>
